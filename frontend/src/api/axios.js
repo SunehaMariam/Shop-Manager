@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || '/api'
+  baseURL: 'https://shop-manager-six-lemon.vercel.app/api'
 });
 
 // Har request ke sath token
