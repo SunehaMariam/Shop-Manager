@@ -1,0 +1,43 @@
+### Health
+GET http://localhost:5000/api/health
+
+### Super admin login
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{ "email": "superadmin@saas.com", "password": "Super@123" }
+
+### Nayi company + uska admin
+POST http://localhost:5000/api/companies
+Content-Type: application/json
+Authorization: Bearer SUPER_ADMIN_TOKEN
+
+{
+  "name": "Al-Noor Textiles",
+  "businessType": "Textile",
+  "phone": "0300-1234567",
+  "address": "Lahore",
+  "adminName": "Bilal Ahmed",
+  "adminEmail": "bilal@alnoor.com",
+  "adminPassword": "Admin@123"
+}
+
+### Company admin login
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{ "email": "bilal@alnoor.com", "password": "Admin@123" }
+
+### Shop banayein (admin token)
+POST http://localhost:5000/api/shops
+Content-Type: application/json
+Authorization: Bearer ADMIN_TOKEN
+
+{ "name": "Main Branch", "code": "SHOP-01", "phone": "042-111222", "address": "Anarkali, Lahore" }
+
+### Production area banayein
+POST http://localhost:5000/api/production-areas
+Content-Type: application/json
+Authorization: Bearer ADMIN_TOKEN
+
+{ "name": "Unit A", "industryType": "Textile", "location": "Sheikhupura Road", "capacityPerDay": 500 }
