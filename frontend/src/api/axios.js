@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://shop-manager-six-lemon.vercel.app/api'
+  baseURL: 'https://shop-manager-jompkj7xg-sunehas-projects-1ce93f5f.vercel.app/api'
 });
 
 // Har request ke sath token
