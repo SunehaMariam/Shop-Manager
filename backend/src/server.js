@@ -9,7 +9,23 @@ connectDB();
 
 const app = express();
 
-app.use(cors({ origin: process.env.CLIENT_URL || '*', credentials: true }));
+// CLIENT_URL se ek ya zyada origins allow karo (comma-separated)
+const allowedOrigins = (process.env.CLIENT_URL || '')
+  .split(',')
+  .map(o => o.trim())
+  .filter(Boolean);
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.length === 0 || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error(`CORS blocked: ${origin} not in allowed list`));
+    }
+  },
+  credentials: true
+}));
+
 app.use(express.json());
 app.use(morgan('dev'));
 
